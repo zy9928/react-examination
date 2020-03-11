@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux-immutable';
 import * as types from '../constants/ActionTypes';
 
 const initialState = {
@@ -41,7 +42,7 @@ const initialState = {
   ],
 };
 
-export default function players(state = initialState, action) {
+export default function players(state = initialState, action: any) {
   switch (action.type) {
     case types.ADD_PLAYER:
       return {
@@ -65,7 +66,7 @@ export default function players(state = initialState, action) {
     case types.STAR_PLAYER:
       let players = [...state.playersById];
       let player = players.find((item, index) => index === action.id);
-      player.starred = !player.starred;
+      player!.starred = !player!.starred;
       return {
         ...state,
         playersById: players,
